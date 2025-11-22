@@ -65,8 +65,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.15
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 500
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -148,22 +148,7 @@ PrefabInstance:
     - target: {fileID: 340983079745828194, guid: 585a8631eae07974d900219e97daa508,
         type: 3}
       propertyPath: m_Name
-      value: Player-capsule Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
         type: 3}
@@ -178,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 2308049595088529277, guid: 585a8631eae07974d900219e97daa508,
         type: 3}
