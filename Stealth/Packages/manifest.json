@@ -12,7 +12,6 @@
     "com.unity.visualscripting": "1.9.8",
     "com.wangnianyi2001.unity-pack.base": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/base",
     "com.wangnianyi2001.unity-pack.character-control": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/character-control",
-    "com.wangnianyi2001.unity-pack.dynamic-mesh": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/dynamic-mesh",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",

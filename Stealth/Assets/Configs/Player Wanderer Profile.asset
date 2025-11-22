@@ -22,7 +22,7 @@ MonoBehaviour:
   movementSpeed: 5
   useAcceleration: 1
   acceleration: 30
-  maxMovingSlope: 30
+  maxMovingSlope: 45
   maxStepHeight: 0.6
   useOrientationSpeedCap: 0
   orientaionSpeed: 360
