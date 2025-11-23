@@ -19,6 +19,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.cinemachine": {
+      "version": "2.10.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.31"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -180,16 +189,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "472e2a7221232b5e6f40c9dfb37dd3c02d4ed781"
-    },
-    "com.wangnianyi2001.unity-pack.character-control": {
-      "version": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/character-control",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.wangnianyi2001.unity-pack.base": ">=0.0.0",
-        "com.unity.inputsystem": ">=1.0.0"
-      },
-      "hash": "bd73cc22ccd6f0c0f8674f489ba573bee9194dc7"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
