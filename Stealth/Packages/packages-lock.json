@@ -184,11 +184,10 @@
       "url": "https://packages.unity.com"
     },
     "com.wangnianyi2001.unity-pack.base": {
-      "version": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/base",
+      "version": "file:com.wangnianyi2001.unity-pack.base",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "472e2a7221232b5e6f40c9dfb37dd3c02d4ed781"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
