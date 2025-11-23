@@ -408,11 +408,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2650978247946930003, guid: 1fa3e08d12ad1764f84acffb42858405,
-        type: 3}
-      propertyPath: m_MinRegionArea
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3689991965207708128, guid: 1fa3e08d12ad1764f84acffb42858405,
         type: 3}
       propertyPath: m_Name
