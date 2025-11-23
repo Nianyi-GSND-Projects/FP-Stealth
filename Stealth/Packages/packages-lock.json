@@ -179,7 +179,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "bd73cc22ccd6f0c0f8674f489ba573bee9194dc7"
+      "hash": "472e2a7221232b5e6f40c9dfb37dd3c02d4ed781"
     },
     "com.wangnianyi2001.unity-pack.character-control": {
       "version": "https://github.com/wangnianyi2001/Nianyi-s-Unity-Pack.git?path=/Packages/character-control",
