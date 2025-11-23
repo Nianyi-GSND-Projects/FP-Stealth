@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Nianyi.UnityPack;
 
 namespace Game
 {
 	[
 		RequireComponent(typeof(CharacterController)),
-		RequireComponent(typeof(PlayerInput))
+		RequireComponent(typeof(PlayerInput)),
 	]
 	public class Player : Character
 	{
+		[SerializeField] Selector selector;
+
 		protected void OnMove(InputValue value)
 		{
 			var raw = value.Get<Vector2>();
@@ -29,6 +32,12 @@ namespace Game
 			else
 				zenith = Mathf.Clamp(zenith, 270, 360);
 			Zenith = zenith;
+		}
+
+		protected void OnInteract()
+		{
+			foreach(var selected in selector.Selected)
+				selected.SendMessage(nameof(IInteractable.OnInteract), SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

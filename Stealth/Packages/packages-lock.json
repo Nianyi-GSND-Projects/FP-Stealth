@@ -189,6 +189,14 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.wangnianyi2001.unity-pack.interaction": {
+      "version": "file:com.wangnianyi2001.unity-pack.interaction",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.wangnianyi2001.unity-pack.base": ">=0.0.0"
+      }
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

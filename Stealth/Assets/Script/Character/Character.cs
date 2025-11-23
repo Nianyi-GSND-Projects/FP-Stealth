@@ -10,22 +10,22 @@ public class Character : MonoBehaviour
 	#endregion
 
 	#region Unity life cycle
-	void Awake()
+	protected void Awake()
 	{
 		body = transform;
 		controller = GetComponent<CharacterController>();
 	}
 
-	void OnEnable()
+	protected void OnEnable()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 	}
-	void OnDisable()
+	protected void OnDisable()
 	{
 		Cursor.lockState = CursorLockMode.None;
 	}
 
-	void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		float dt = Time.fixedDeltaTime;
 		if(bufferMovementInput.sqrMagnitude > controller.contactOffset)
@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
 
 	void MoveConstrained(Vector3 targetPos)
 	{
-		if(!NavMesh.SamplePosition(targetPos, out var hit, 5f, 1))
+		if(!NavMesh.SamplePosition(targetPos, out var hit, controller.stepOffset, 1))
 			return;
 		targetPos = hit.position;
 

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219215457020103865}
+  - component: {fileID: 745819390606988870}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -31,6 +32,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4027643016336458853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &745819390606988870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209282695398857836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6d4d200686896469515d38b53f59b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectFocusables: 1
+  affectSelectables: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 67
+  useMaxDistance: 1
+  distance: 5
+  direction: {x: 0, y: 0, z: 1}
+  passThrough: 0
 --- !u!1 &3250107389427395284
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +245,7 @@ MonoBehaviour:
   head: {fileID: 4027643016336458853}
   moveSpeed: 3
   orientSpeed: 1
+  selector: {fileID: 745819390606988870}
 --- !u!114 &317656029369642155
 MonoBehaviour:
   m_ObjectHideFlags: 0
