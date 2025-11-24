@@ -28,26 +28,15 @@ public class Character : MonoBehaviour
 	protected void FixedUpdate()
 	{
 		float dt = Time.fixedDeltaTime;
-		if(bufferMovementInput.sqrMagnitude > controller.contactOffset)
-		{
-			Vector3 worldVelocity = body.localToWorldMatrix.MultiplyVector(bufferMovementInput).normalized * moveSpeed;
-			MoveConstrained(body.position + worldVelocity * dt);
-		}
+
+		Vector3 worldVelocity = body.localToWorldMatrix.MultiplyVector(bufferMovementInput).normalized * moveSpeed;
+		controller.SimpleMove(worldVelocity);
 	}
 	#endregion
 
 	#region Movement
 	[Range(0, 10)] public float moveSpeed = 3.0f;
 	protected Vector3 bufferMovementInput = default;
-
-	void MoveConstrained(Vector3 targetPos)
-	{
-		if(!NavMesh.SamplePosition(targetPos, out var hit, controller.stepOffset, 1))
-			return;
-		targetPos = hit.position;
-
-		controller.Move(targetPos - body.position);
-	}
 
 	[Range(0, 1)] public float orientSpeed = 1.0f;
 	protected float Azimuth
