@@ -12,10 +12,17 @@ namespace Game
 	{
 		[SerializeField] Selector selector;
 
+		protected new void FixedUpdate()
+		{
+			DesiredVelocity = transform.TransformVector(movementInput * MoveSpeed);
+			base.FixedUpdate();
+		}
+
+		Vector3 movementInput;
 		protected void OnMove(InputValue value)
 		{
 			var raw = value.Get<Vector2>();
-			bufferMovementInput = new Vector3(raw.x, 0, raw.y);
+			movementInput = new Vector3(raw.x, 0, raw.y);
 		}
 
 		protected void OnLook(InputValue value)

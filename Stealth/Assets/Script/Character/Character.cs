@@ -4,9 +4,9 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
 	#region Component references
-	Transform body;
-	[SerializeField] Transform head;
-	CharacterController controller;
+	protected Transform body;
+	[SerializeField] protected Transform head;
+	protected CharacterController controller;
 	#endregion
 
 	#region Unity life cycle
@@ -29,16 +29,32 @@ public class Character : MonoBehaviour
 	{
 		float dt = Time.fixedDeltaTime;
 
-		Vector3 worldVelocity = body.localToWorldMatrix.MultiplyVector(bufferMovementInput).normalized * moveSpeed;
-		controller.SimpleMove(worldVelocity);
+		controller.SimpleMove(DesiredVelocity);
 	}
+
+#if UNITY_EDITOR
+	protected void OnDrawGizmos()
+	{
+		if(!Application.isPlaying)
+			return;
+
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(body.position, body.position + DesiredVelocity);
+	}
+#endif
 	#endregion
 
 	#region Movement
-	[Range(0, 10)] public float moveSpeed = 3.0f;
-	protected Vector3 bufferMovementInput = default;
+	[SerializeField, Range(0, 10)] protected float moveSpeed = 3.0f;
+	public Vector3 DesiredVelocity { get; set; } = default;
+	public float MoveSpeed
+	{
+		get => moveSpeed;
+		set => moveSpeed = value;
+	}
 
-	[Range(0, 1)] public float orientSpeed = 1.0f;
+	[SerializeField, Min(0f)] protected float orientSpeed = 1.0f;
+
 	protected float Azimuth
 	{
 		get => body.eulerAngles.y;
