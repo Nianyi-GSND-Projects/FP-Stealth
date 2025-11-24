@@ -12,7 +12,9 @@ public enum NpcStatus { Idle, Patrolling, Chasing }
 public class Npc : Character
 {
 	NavMeshAgent agent;
+	[SerializeField] Animator animator;
 
+	#region Unity lyfe cycle
 	protected new void Awake()
 	{
 		base.Awake();
@@ -33,6 +35,12 @@ public class Npc : Character
 				break;
 		}
 	}
+
+	protected void Update()
+	{
+		animator.SetBool("Walking", IsWalking);
+	}
+	#endregion
 
 	#region Status
 	[SerializeField] NpcStatus status = NpcStatus.Idle;

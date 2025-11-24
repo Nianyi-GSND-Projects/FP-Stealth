@@ -52,6 +52,7 @@ public class Character : MonoBehaviour
 		get => moveSpeed;
 		set => moveSpeed = value;
 	}
+	public bool IsWalking => DesiredVelocity.sqrMagnitude > .1f;
 
 	[SerializeField, Min(0f)] protected float orientSpeed = 1.0f;
 
