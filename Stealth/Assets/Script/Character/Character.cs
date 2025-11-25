@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(CharacterController))]
 public class Character : MonoBehaviour
 {
 	#region Component references
-	protected Transform body;
 	[SerializeField] protected Transform head;
-	protected CharacterController controller;
+	public CharacterController Controller { get; private set; }
 	#endregion
 
 	#region Unity life cycle
 	protected void Awake()
 	{
-		body = transform;
-		controller = GetComponent<CharacterController>();
+		Controller = GetComponent<CharacterController>();
 	}
 
 	protected void OnEnable()
@@ -29,7 +28,7 @@ public class Character : MonoBehaviour
 	{
 		float dt = Time.fixedDeltaTime;
 
-		controller.SimpleMove(DesiredVelocity);
+		Controller.SimpleMove(DesiredVelocity);
 	}
 
 #if UNITY_EDITOR
@@ -39,7 +38,7 @@ public class Character : MonoBehaviour
 			return;
 
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawLine(body.position, body.position + DesiredVelocity);
+		Gizmos.DrawLine(transform.position, transform.position + DesiredVelocity);
 	}
 #endif
 	#endregion
@@ -58,12 +57,12 @@ public class Character : MonoBehaviour
 
 	protected float Azimuth
 	{
-		get => body.eulerAngles.y;
+		get => transform.eulerAngles.y;
 		set
 		{
-			var euler = body.eulerAngles;
+			var euler = transform.eulerAngles;
 			euler.y = value;
-			body.eulerAngles = euler;
+			transform.eulerAngles = euler;
 		}
 	}
 	protected float Zenith

@@ -1,16 +1,18 @@
 using UnityEngine;
-using UnityEngine.AI;
 using Unity.AI.Navigation;
-using System.Collections;
 
 public class GameInstance : MonoBehaviour
 {
 	public static GameInstance Instance { get; private set; }
 	public bool Ready { get; private set; } = false;
 
+	public Player Player { get; private set; }
+
 	void Awake()
 	{
 		Instance = this;
+		Player = FindObjectOfType<Player>();
+		onPlayerSpotted += OnPlayerSpotted;
 	}
 
 	void OnDestroy()
@@ -27,5 +29,13 @@ public class GameInstance : MonoBehaviour
 		}
 
 		Ready = true;
+	}
+
+	public System.Action onPlayerSpotted;
+	void OnPlayerSpotted()
+	{
+		Debug.Log("The player is spotted!");
+		foreach(var npc in FindObjectsByType<Npc>(FindObjectsSortMode.None))
+			npc.Follow(Player.transform);
 	}
 }

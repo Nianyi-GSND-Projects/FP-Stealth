@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.AI.Navigation;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Nianyi.UnityPack;
 
-public enum NpcStatus { Idle, Patrolling, Chasing }
+public enum NpcState { Idle, Patrolling, Following }
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Npc : Character
@@ -28,9 +27,9 @@ public class Npc : Character
 		yield return new WaitUntil(() => GameInstance.Instance.Ready);
 
 		agent.enabled = true;
-		switch(status)
+		switch(state)
 		{
-			case NpcStatus.Patrolling:
+			case NpcState.Patrolling:
 				Patrol(patrolPoints);
 				break;
 		}
@@ -42,9 +41,9 @@ public class Npc : Character
 	}
 	#endregion
 
-	#region Status
-	[SerializeField] NpcStatus status = NpcStatus.Idle;
-	public NpcStatus Status => status;
+	#region State
+	[SerializeField] NpcState state = NpcState.Idle;
+	public NpcState State => state;
 
 	[SerializeField] List<Transform> patrolPoints;
 	#endregion
@@ -76,8 +75,8 @@ public class Npc : Character
 	{
 		for(; ; )
 		{
-			Vector3 delta = destination - body.transform.position;
-			if(delta.magnitude < controller.radius)
+			Vector3 delta = destination - transform.transform.position;
+			if(delta.magnitude < Controller.radius)
 				break;
 
 			float deltaAzimuth = Quaternion.LookRotation(delta).eulerAngles.y - Azimuth;
@@ -88,7 +87,7 @@ public class Npc : Character
 			float azimuthClamp = 360f * orientSpeed * Time.fixedDeltaTime;
 			Azimuth += Mathf.Clamp(deltaAzimuth, -azimuthClamp, azimuthClamp);
 			
-			DesiredVelocity = body.forward * MoveSpeed;
+			DesiredVelocity = transform.forward * MoveSpeed;
 			yield return new WaitForFixedUpdate();
 		}
 	}
@@ -112,6 +111,30 @@ public class Npc : Character
 				NavigateTo(point);
 				yield return new WaitWhile(() => navigating);
 			}
+		}
+	}
+
+	public void Follow(Transform target)
+	{
+		StopAllCoroutines();
+		StartCoroutine(nameof(FollowCoroutine), target);
+	}
+
+	IEnumerator FollowCoroutine(Transform target)
+	{
+		for(; ; )
+		{
+			Vector3 delta = target.position - transform.transform.position;
+			float deltaAzimuth = Quaternion.LookRotation(delta).eulerAngles.y - Azimuth;
+			if(deltaAzimuth > 180f)
+				deltaAzimuth -= 360f;
+			if(deltaAzimuth < -180f)
+				deltaAzimuth += 360f;
+			float azimuthClamp = 360f * orientSpeed * Time.fixedDeltaTime;
+			Azimuth += Mathf.Clamp(deltaAzimuth, -azimuthClamp, azimuthClamp);
+
+			DesiredVelocity = transform.forward * MoveSpeed;
+			yield return new WaitForFixedUpdate();
 		}
 	}
 	#endregion
