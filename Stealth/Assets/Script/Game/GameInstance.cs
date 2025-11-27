@@ -7,6 +7,8 @@ public class GameInstance : MonoBehaviour
 	public bool Ready { get; private set; } = false;
 
 	public Player Player { get; private set; }
+	[SerializeField] Canvas ui;
+	public Canvas Ui => ui;
 
 	void Awake()
 	{
