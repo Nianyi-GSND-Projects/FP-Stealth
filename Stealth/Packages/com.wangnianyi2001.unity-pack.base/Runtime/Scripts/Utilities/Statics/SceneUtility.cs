@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Nianyi.UnityPack
 {

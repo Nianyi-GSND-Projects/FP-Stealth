@@ -49,9 +49,8 @@ public class Observer : MonoBehaviour
 	#endregion
 
 	#region Alertness
-	[SerializeField] AlertnessIndicator indicator;
 	[SerializeField, Min(0f)] float alertingInterval = 5f;
-	bool alerted = false;
+	bool spotted = false;
 	float alertness = 0f;
 	public float Alertness
 	{
@@ -59,17 +58,44 @@ public class Observer : MonoBehaviour
 		set
 		{
 			alertness = Mathf.Clamp01(value);
-			if(!alerted && alertness == 1)
+			UseOnscreenPointer = SeeingPlayer && !visibleOnScreen;
+			if(!spotted && alertness == 1)
 			{
-				alerted = true;
-				OnAlerted();
+				spotted = true;
+				OnSpotted();
 			}
 		}
 	}
 
-	void OnAlerted()
+	void OnSpotted()
 	{
 		GameInstance.Instance?.onPlayerSpotted?.Invoke();
+	}
+	#endregion
+
+	#region Indicator
+	[SerializeField] AlertnessIndicator indicator;
+	OnscreenPointer onscreenPointer;
+	bool visibleOnScreen;
+	
+	bool UseOnscreenPointer
+	{
+		get => onscreenPointer != null;
+		set
+		{
+			if(value == UseOnscreenPointer)
+				return;
+			if(value)
+			{
+				onscreenPointer = HierarchyUtility.InstantiatePrefabFromResource<OnscreenPointer>("UI/Onscreen Alertness Pointer");
+				onscreenPointer.transform.SetParent(GameInstance.Instance.Ui.transform, false);
+				onscreenPointer.target = transform;
+			}
+			else
+			{
+				Destroy(onscreenPointer.gameObject);
+			}
+		}
 	}
 	#endregion
 
@@ -88,7 +114,7 @@ public class Observer : MonoBehaviour
 		float dt = Time.deltaTime;
 
 		SeeingPlayer = CanSeePlayer();
-		if(!alerted)
+		if(!spotted)
 		{
 			float da = dt / alertingInterval;
 			if(SeeingPlayer)
@@ -97,5 +123,10 @@ public class Observer : MonoBehaviour
 				Alertness -= da;
 			indicator.Value = Alertness;
 		}
+	}
+
+	void LateUpdate()
+	{
+		visibleOnScreen = transform.IsOnScreen();
 	}
 }
