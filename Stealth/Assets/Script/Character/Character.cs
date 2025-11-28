@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(CharacterController))]
 public class Character : MonoBehaviour
 {
 	#region Component references
-	Transform body;
-	[SerializeField] Transform head;
-	CharacterController controller;
+	[SerializeField] protected Transform head;
+	public CharacterController Controller { get; private set; }
 	#endregion
 
 	#region Unity life cycle
 	protected void Awake()
 	{
-		body = transform;
-		controller = GetComponent<CharacterController>();
+		Controller = GetComponent<CharacterController>();
 	}
 
 	protected void OnEnable()
@@ -28,36 +27,42 @@ public class Character : MonoBehaviour
 	protected void FixedUpdate()
 	{
 		float dt = Time.fixedDeltaTime;
-		if(bufferMovementInput.sqrMagnitude > controller.contactOffset)
-		{
-			Vector3 worldVelocity = body.localToWorldMatrix.MultiplyVector(bufferMovementInput).normalized * moveSpeed;
-			MoveConstrained(body.position + worldVelocity * dt);
-		}
+
+		Controller.SimpleMove(DesiredVelocity);
 	}
+
+#if UNITY_EDITOR
+	protected void OnDrawGizmos()
+	{
+		if(!Application.isPlaying)
+			return;
+
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(transform.position, transform.position + DesiredVelocity);
+	}
+#endif
 	#endregion
 
 	#region Movement
-	[Range(0, 10)] public float moveSpeed = 3.0f;
-	protected Vector3 bufferMovementInput = default;
-
-	void MoveConstrained(Vector3 targetPos)
+	[SerializeField, Range(0, 10)] protected float moveSpeed = 3.0f;
+	public Vector3 DesiredVelocity { get; set; } = default;
+	public float MoveSpeed
 	{
-		if(!NavMesh.SamplePosition(targetPos, out var hit, controller.stepOffset, 1))
-			return;
-		targetPos = hit.position;
-
-		controller.Move(targetPos - body.position);
+		get => moveSpeed;
+		set => moveSpeed = value;
 	}
+	public bool IsWalking => DesiredVelocity.sqrMagnitude > .1f;
 
-	[Range(0, 1)] public float orientSpeed = 1.0f;
+	[SerializeField, Min(0f)] protected float orientSpeed = 1.0f;
+
 	protected float Azimuth
 	{
-		get => body.eulerAngles.y;
+		get => transform.eulerAngles.y;
 		set
 		{
-			var euler = body.eulerAngles;
+			var euler = transform.eulerAngles;
 			euler.y = value;
-			body.eulerAngles = euler;
+			transform.eulerAngles = euler;
 		}
 	}
 	protected float Zenith

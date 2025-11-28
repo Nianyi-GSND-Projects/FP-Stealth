@@ -1,25 +1,43 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Nianyi.UnityPack
 {
 	public static class PhysicsUtility
 	{
-
 		#region Capsule
 		public static void GetCapsuleCenters(in CapsuleCollider capsule, out Vector3 center1, out Vector3 center2)
 		{
-			float half = capsule.height * 0.5f - capsule.radius;
-			var dir = capsule.direction switch
-			{
-				0 => Vector3.right,
-				1 => Vector3.up,
-				_ => Vector3.forward,
-			};
+			GetCapsuleCenters(
+				capsule.center,
+				capsule.direction switch
+				{
+					0 => Vector3.right,
+					1 => Vector3.up,
+					_ => Vector3.forward,
+				},
+				capsule.height * 0.5f - capsule.radius,
+				capsule.transform.localToWorldMatrix,
+				out center1, out center2
+			);
+		}
 
-			center1 = capsule.transform.TransformPoint(capsule.center + dir * half);
-			center2 = capsule.transform.TransformPoint(capsule.center - dir * half);
+		public static void GetCapsuleCenters(in CharacterController capsule, out Vector3 center1, out Vector3 center2)
+		{
+			GetCapsuleCenters(
+				capsule.center,
+				Vector3.up,
+				capsule.height * 0.5f - capsule.radius,
+				capsule.transform.localToWorldMatrix,
+				out center1, out center2
+			);
+		}
+
+		static void GetCapsuleCenters(Vector3 center, Vector3 dir, float half, Matrix4x4 transform, out Vector3 center1, out Vector3 center2)
+		{
+			center1 = transform.MultiplyPoint(center + dir * half);
+			center2 = transform.MultiplyPoint(center - dir * half);
 		}
 		#endregion
 
@@ -33,7 +51,8 @@ namespace Nianyi.UnityPack
 		public static Vector3 WallClip(Vector3 movement, List<WallClipConstraint> constraints, float tolerance = 0.01f)
 		{
 			constraints = constraints
-				.Select(c => {
+				.Select(c =>
+				{
 					c.normal = c.normal.normalized;
 					return c;
 				})
@@ -41,7 +60,8 @@ namespace Nianyi.UnityPack
 				.ToList();
 			if(constraints.Count() < 3)
 				return WallClip_Internal(movement, constraints);
-			constraints.Sort((a, b) => {
+			constraints.Sort((a, b) =>
+			{
 				float pa = WallClip_Penalty(movement, a), pb = WallClip_Penalty(movement, b);
 				return pa == pb ? 0 : pa > pb ? -1 : 1;
 			});
