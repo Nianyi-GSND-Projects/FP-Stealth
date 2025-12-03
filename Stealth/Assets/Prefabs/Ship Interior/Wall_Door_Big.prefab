@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7130709137338409139}
+  - component: {fileID: 6952633584517704732}
   m_Layer: 0
   m_Name: Wall_Door_Big
   m_TagString: Untagged
@@ -31,8 +32,24 @@ Transform:
   m_Children:
   - {fileID: 470105647920924783}
   - {fileID: 5356232173100606561}
+  - {fileID: 3961109562610858567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6952633584517704732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376035204697079651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59fa96ba08233d745af70922474f72b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftDoor: {fileID: 994721796144698069}
+  rightDoor: {fileID: 4692460974284635867}
+  ui: {fileID: 3314357623420532048}
 --- !u!1001 &75611103572668292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,6 +108,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5922045972663253149, guid: c5e78ec95923bb34ab40321ab54b462c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -2609605681936299153, guid: c5e78ec95923bb34ab40321ab54b462c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -121,6 +143,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5e78ec95923bb34ab40321ab54b462c,
     type: 3}
   m_PrefabInstance: {fileID: 75611103572668292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &994721796144698069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5e78ec95923bb34ab40321ab54b462c,
+    type: 3}
+  m_PrefabInstance: {fileID: 75611103572668292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3442011508865110182
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7130709137338409139}
+    m_Modifications:
+    - target: {fileID: 160596359766910454, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_Name
+      value: Door Interaction UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4caef820a70579d4e8a702ba76c92e12, type: 3}
+--- !u!1 &3314357623420532048 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 160596359766910454, guid: 4caef820a70579d4e8a702ba76c92e12,
+    type: 3}
+  m_PrefabInstance: {fileID: 3442011508865110182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3961109562610858567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1818551628146715361, guid: 4caef820a70579d4e8a702ba76c92e12,
+    type: 3}
+  m_PrefabInstance: {fileID: 3442011508865110182}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5611363867613676426
 PrefabInstance:
@@ -180,6 +288,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5922045972663253149, guid: c5e78ec95923bb34ab40321ab54b462c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -2609605681936299153, guid: c5e78ec95923bb34ab40321ab54b462c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,6 +318,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e78ec95923bb34ab40321ab54b462c, type: 3}
+--- !u!1 &4692460974284635867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c5e78ec95923bb34ab40321ab54b462c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5611363867613676426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5356232173100606561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5e78ec95923bb34ab40321ab54b462c,
