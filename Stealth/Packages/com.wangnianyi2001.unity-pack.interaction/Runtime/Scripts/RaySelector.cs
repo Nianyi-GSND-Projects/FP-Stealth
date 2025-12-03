@@ -15,8 +15,9 @@ namespace Nianyi.UnityPack
 		{
 			foreach(var hit in GetRaycastHits())
 			{
-				if(hit.collider.gameObject.TryGetComponent<IFocusable>(out _))
-					yield return hit.collider.gameObject;
+				var focusable = hit.collider.gameObject.GetComponentInParent<IFocusable>();
+				if(focusable != null)
+					yield return (focusable as Component).gameObject;
 			}
 		}
 
@@ -24,8 +25,9 @@ namespace Nianyi.UnityPack
 		{
 			foreach(var hit in GetRaycastHits())
 			{
-				if(hit.collider.gameObject.TryGetComponent<ISelectable>(out _))
-					yield return hit.collider.gameObject;
+				var selectable = hit.collider.gameObject.GetComponentInParent<ISelectable>();
+				if(selectable != null)
+					yield return (selectable as Component).gameObject;
 			}
 		}
 
