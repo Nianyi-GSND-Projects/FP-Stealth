@@ -624,11 +624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
-    - target: {fileID: 3690409849082520604, guid: 1fa3e08d12ad1764f84acffb42858405,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.398
-      objectReference: {fileID: 0}
     - target: {fileID: 8968551827450271801, guid: 1fa3e08d12ad1764f84acffb42858405,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1070,9 +1065,9 @@ SceneRoots:
   - {fileID: 1071080008}
   - {fileID: 175104622}
   - {fileID: 1193439622669383970}
+  - {fileID: 969678080284665132}
   - {fileID: 1841944701669286024}
   - {fileID: 3817724525998288603}
   - {fileID: 2095864059}
   - {fileID: 1847115098}
   - {fileID: 800781736}
-  - {fileID: 969678080284665132}
