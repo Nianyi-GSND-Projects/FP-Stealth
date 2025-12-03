@@ -101,7 +101,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -116,7 +116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8890748493031330768}
   - component: {fileID: 3233289453107516979}
-  m_Layer: 0
+  - component: {fileID: 4242869522242373115}
+  m_Layer: 6
   m_Name: Inner_Big_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +157,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 3070790134981066625}
   ui: {fileID: 7664817404019814470}
+--- !u!65 &4242869522242373115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689125877372981378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.3, y: 2.48, z: 0.51}
+  m_Center: {x: 0, y: 1.04, z: 0}
 --- !u!1 &3070790134981066625
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +190,7 @@ GameObject:
   - component: {fileID: 1032495713961992925}
   - component: {fileID: 8908472136788180198}
   - component: {fileID: 7804289384948956950}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SmallDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
