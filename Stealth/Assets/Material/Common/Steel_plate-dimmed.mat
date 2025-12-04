@@ -40,11 +40,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
-    - _Metallic: 0.674
+    - _Metallic: 0.591
     - _Normal_Intensity: 0.32
     - _Smoothness: 0.429
     m_Colors:
-    - _Color: {r: 0.38364768, g: 0.38364768, b: 0.38364768, a: 1}
+    - _Color: {r: 0.42, g: 0.42, b: 0.42, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5971152676827497783
 MonoBehaviour:
