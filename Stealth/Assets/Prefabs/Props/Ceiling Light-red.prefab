@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8c85c25ef233fd1429761a684c14bcc9, type: 2}
     - target: {fileID: 5504079419603626973, guid: 51b62b02569351b4a9a5fd0123390685,
         type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504079419603626973, guid: 51b62b02569351b4a9a5fd0123390685,
+        type: 3}
       propertyPath: m_Range
       value: 12
       objectReference: {fileID: 0}
@@ -86,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 5504079419603626973, guid: 51b62b02569351b4a9a5fd0123390685,
         type: 3}
       propertyPath: m_Intensity
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5504079419603626973, guid: 51b62b02569351b4a9a5fd0123390685,
         type: 3}
