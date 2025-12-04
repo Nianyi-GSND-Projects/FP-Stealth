@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Nianyi.UnityPack;
+using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Player : Character
@@ -10,7 +12,22 @@ public class Player : Character
 	protected new void FixedUpdate()
 	{
 		DesiredVelocity = transform.TransformVector(movementInput * MoveSpeed);
-		base.FixedUpdate();
+		bool moving = DesiredVelocity.sqrMagnitude > 0;
+		if(!moving)
+		{
+			if(stepCoroutine != null)
+			{
+				StopCoroutine(stepCoroutine);
+				stepCoroutine = null;
+			}
+		}
+		else
+		{
+			if(stepCoroutine == null)
+				stepCoroutine = StartCoroutine(StepCoroutine());
+		}
+
+			base.FixedUpdate();
 	}
 
 	Vector3 movementInput;
@@ -40,5 +57,20 @@ public class Player : Character
 	{
 		foreach(var selected in selector.Selected)
 			selected.SendMessage(nameof(IInteractable.OnInteract), SendMessageOptions.DontRequireReceiver);
+	}
+
+	[SerializeField] List<AudioClip> stepAudios;
+	[SerializeField] AudioSource stepSource;
+	[SerializeField, Min(0)] float stepInterval = 0.3f;
+	Coroutine stepCoroutine;
+
+	IEnumerator StepCoroutine()
+	{
+		for(; ; )
+		{
+			var step = stepAudios[Mathf.FloorToInt(Random.value * stepAudios.Count)];
+			stepSource.PlayOneShot(step);
+			yield return new WaitForSeconds(stepInterval);
+		}
 	}
 }
