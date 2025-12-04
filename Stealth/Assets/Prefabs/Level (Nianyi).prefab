@@ -8,10 +8,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212302363876428827, guid: 1fa3e08d12ad1764f84acffb42858405,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 5860
+      objectReference: {fileID: 0}
     - target: {fileID: 3689991965207708128, guid: 1fa3e08d12ad1764f84acffb42858405,
         type: 3}
       propertyPath: m_Name
       value: Level (Nianyi)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306368099217955624, guid: 1fa3e08d12ad1764f84acffb42858405,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 5862
       objectReference: {fileID: 0}
     - target: {fileID: 8968551827450271801, guid: 1fa3e08d12ad1764f84acffb42858405,
         type: 3}
