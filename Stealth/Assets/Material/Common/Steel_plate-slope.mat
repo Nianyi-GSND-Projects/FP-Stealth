@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Steel_plate-dimmed
+  m_Name: Steel_plate-slope
   m_Shader: {fileID: -6465566751694194690, guid: abc9db37f5a32c3459471394e6c88d0a,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 6bb41749ca5827e4596922f82ec25cb3, type: 2}
@@ -40,11 +40,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_QueueControl: 0
-    - _Metallic: 0.591
+    - _Metallic: 0.338
     - _Normal_Intensity: 0.32
-    - _Smoothness: 0.429
+    - _Smoothness: 0.467
     m_Colors:
-    - _Color: {r: 0.42, g: 0.42, b: 0.42, a: 1}
+    - _Color: {r: 0.8742138, g: 0.72329783, b: 0.15669861, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5971152676827497783
 MonoBehaviour:
